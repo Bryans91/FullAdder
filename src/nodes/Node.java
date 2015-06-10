@@ -5,7 +5,7 @@ import java.util.Observable;
 
 public abstract class Node extends Observable implements  Observer {
 	
-	protected int inputCount = 0,output =0;
+	protected int inputCount = 0,output = 0;
 	protected ArrayList<Integer> input = new ArrayList<Integer>();
 	
 	
@@ -27,6 +27,7 @@ public abstract class Node extends Observable implements  Observer {
 		
 		if(this.inputCount == this.input.size()){
 			this.output = this.doCalc();
+			this.setChanged();
 			notifyObservers(output);
 		}	
 	}
