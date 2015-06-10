@@ -27,24 +27,34 @@ public class Circuit {
 	private void setNodeObservers(String nodeLinks, int i) {
 		ArrayList<Node> nodeList = this.nodeFactory.getNodeList();
 		ArrayList<String> nodeLinksArray = new ArrayList<String>();
+		if (nodeLinks.charAt(0) == 'C') {
+			return;
+		} else if (nodeLinks.charAt(0) == 'A') {
+			return;
+		} else if (nodeLinks.charAt(0) == 'B') {
+			return;
+		}
 		nodeLinks = nodeLinks.substring(0, nodeLinks.indexOf(';'));
 		nodeLinks = nodeLinks.substring(nodeLinks.indexOf(":")+1, nodeLinks.length());
-		nodeLinks = nodeLinks.replaceAll("NODE", "");
-		if (nodeLinks.equals("Cout") || nodeLinks.equals("S")) {
-			// TODO
+		if (nodeLinks.charAt(0) == 'N') {
+			nodeLinks = nodeLinks.replaceAll("NODE", "");
+		}
+		if (nodeLinks.contains(",")) {
+			String[] split = nodeLinks.split(",");
+			nodeLinksArray = new ArrayList<String>(Arrays.asList(split));
 		} else {
-			if (nodeLinks.contains(",")) {
-				String[] split = nodeLinks.split(",");
-				nodeLinksArray = new ArrayList<String>(Arrays.asList(split));
-			} else {
-				nodeLinksArray.add(nodeLinks);
-			}
-			for (String link : nodeLinksArray) {
+			nodeLinksArray.add(nodeLinks);
+		}
+		for (String link : nodeLinksArray) {
+			if (!link.contains("Cout") && !link.contains("S")) {
 				int linkInt = Integer.parseInt(link)-1;
 				nodeList.get(i).setObserver(nodeList.get(linkInt));
-				System.out.println("Node " + i + " has observable: " + linkInt);
+				System.out.println("Node " + (i+1) + " has observable: " + (linkInt+1));
+			} else if (link.contains("Cout")) {
+				System.out.println("Node " + (i+1) + " has observable: Cout");
+			} else if (link.contains("S")) {
+				System.out.println("Node " + (i+1) + " has observable: S");
 			}
-			nodeList.get(i).setObserver(nodeList.get(i)); 
 		}
 	}
 	
@@ -85,9 +95,11 @@ public class Circuit {
                 } else if("".equals(s.trim())) {
                 	nodeCreation = false;
                 // Not nodeCreation so it's time to link the nodes
-                } else if(!s.contains("#") && s.contains("NODE") && s.charAt(0) == 'N' && !nodeCreation) {
+                } else if(!s.contains("#") && s.contains("NODE") && !nodeCreation) {
                 	setNodeObservers(s, i);
-                	i++;
+                	if (!s.contains("A") && !s.contains("B") && !s.contains("Cin")) {
+                		i++;
+                	}
                 }
             }
 
