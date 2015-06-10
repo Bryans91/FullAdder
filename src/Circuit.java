@@ -6,27 +6,35 @@ import java.util.ArrayList;
 
 public class Circuit {
 	
+	private NodeFactory nodeFactory = new NodeFactory();
 	private ArrayList<String> lines;
 	private int carryIn, a, b;
-	public int carryOut;
+	public int carryOut,sOut;
 	
-	public Circuit(String fileName, int carryIn, int a ,int b){
-		this.a = a;
-		this.b = b;
+	
+	public Circuit(String fileName, int carryIn){
 		this.carryIn = carryIn;
 		readFile(fileName);
-		
-		
-		for(String l : lines){
-			System.out.println(l);
-		}
-		
-
+		createCircuit();
 	}
 	
 	
+	
+	
+	
+	private void createCircuit() {;
+		
+		// nodeType (String) can be: AND, NAND, NOR, NOT, OR, XOR
+		this.nodeFactory.createNode("AND");
+		
+	}
+
+
+
+
+
 	public boolean readFile(String fileName){
-			lines = new ArrayList<>();
+			lines = new ArrayList<String>();
 	        try
 	        {
 	        	FileReader fr = new java.io.FileReader(fileName);
@@ -40,8 +48,12 @@ public class Circuit {
 
 	            fr.close();
 	        }
-	        catch (FileNotFoundException e)             { System.out.println("File: " + fileName + " does not exist. Exiting program."); System.exit(1); }
-	        catch (IOException e)                       { System.out.println("Failed to read file: " + fileName + ". Exiting program."); System.exit(1); }
+	        catch (FileNotFoundException e){ 
+	        	System.out.println("File: " + fileName + " does not exist. Exiting program."); System.exit(1); 
+	        	}
+	        catch (IOException e){ 
+	        	System.out.println("Failed to read file: " + fileName + ". Exiting program."); System.exit(1); 
+	        	}
 		return true;
 	}
 	
