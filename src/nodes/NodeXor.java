@@ -1,3 +1,4 @@
+package nodes;
 
 public class NodeXor extends Node {
 	

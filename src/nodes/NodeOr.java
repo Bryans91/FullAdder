@@ -1,3 +1,4 @@
+package nodes;
 
 public class NodeOr extends Node {
 	

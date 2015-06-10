@@ -1,3 +1,4 @@
+package nodes;
 
 public class NodeNot extends Node {
 	
