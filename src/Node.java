@@ -8,8 +8,10 @@ public abstract class Node extends Observable implements  Observer {
 	protected ArrayList<Integer> input = new ArrayList<Integer>();
 	
 	
-	public void doCalc(){
-	
+	public int doCalc(){
+		
+		
+		return output;
 	}
 	
 	
@@ -23,7 +25,7 @@ public abstract class Node extends Observable implements  Observer {
 		this.input.add((int) arg);
 		
 		if(this.inputCount == this.input.size()){
-			this.doCalc();
+			this.output = this.doCalc();
 			notifyObservers(output);
 		}	
 	}
