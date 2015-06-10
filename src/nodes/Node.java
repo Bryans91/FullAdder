@@ -1,3 +1,4 @@
+package nodes;
 import java.util.ArrayList;
 import java.util.Observer;
 import java.util.Observable;
