@@ -1,21 +1,22 @@
+package main;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import nodes.Node;
 
 public class Circuit {
 	
 	private NodeFactory nodeFactory = new NodeFactory();
-	private ArrayList<String> lines;
 	private int carryIn, a, b;
-	public int carryOut,sOut;
-	
+	public int carryOut,sOut;	
 	
 	public Circuit(String fileName, int carryIn){
-		this.carryIn = carryIn;
+//		this.carryIn = carryIn; // TODO Alleen als carryin gezet is?
 		readFile(fileName);
 	}
 	
@@ -23,11 +24,28 @@ public class Circuit {
 	
 	
 	
-	private void setNodeObserver() {
-		
+	private void setNodeObservers(String nodeLinks, int i) {
 		ArrayList<Node> nodeList = this.nodeFactory.getNodeList();
-		System.out.println(nodeList.size());
-		
+		ArrayList<String> nodeLinksArray = new ArrayList<String>();
+		nodeLinks = nodeLinks.substring(0, nodeLinks.indexOf(';'));
+		nodeLinks = nodeLinks.substring(nodeLinks.indexOf(":")+1, nodeLinks.length());
+		nodeLinks = nodeLinks.replaceAll("NODE", "");
+		if (nodeLinks.equals("Cout") || nodeLinks.equals("S")) {
+			// TODO
+		} else {
+			if (nodeLinks.contains(",")) {
+				String[] split = nodeLinks.split(",");
+				nodeLinksArray = new ArrayList<String>(Arrays.asList(split));
+			} else {
+				nodeLinksArray.add(nodeLinks);
+			}
+			for (String link : nodeLinksArray) {
+				int linkInt = Integer.parseInt(link)-1;
+				nodeList.get(i).setObserver(nodeList.get(linkInt));
+				System.out.println("Node " + i + " has observable: " + linkInt);
+			}
+			nodeList.get(i).setObserver(nodeList.get(i)); 
+		}
 	}
 	
 	private void createNode (String type) {
@@ -42,12 +60,12 @@ public class Circuit {
 
 
 	public boolean readFile(String fileName){
-		lines = new ArrayList<String>();
 		try
         {
 			FileReader fr = new java.io.FileReader(fileName);
             BufferedReader br = new BufferedReader(fr);
             String s;
+            int i = 0;
             boolean nodeCreation = true;
             while ((s = br.readLine()) != null)
             {
@@ -67,8 +85,9 @@ public class Circuit {
                 } else if("".equals(s.trim())) {
                 	nodeCreation = false;
                 // Not nodeCreation so it's time to link the nodes
-                } else if(!s.contains("#") && s.contains("NODE") && !nodeCreation) {
-                	System.out.println("NODE LINK:" + s);
+                } else if(!s.contains("#") && s.contains("NODE") && s.charAt(0) == 'N' && !nodeCreation) {
+                	setNodeObservers(s, i);
+                	i++;
                 }
             }
 
