@@ -7,6 +7,7 @@ public abstract class Node extends Observable implements  Observer {
 	
 	protected int inputCount = 0,output = 0;
 	protected ArrayList<Integer> input = new ArrayList<Integer>();
+	protected boolean used = false;
 	
 	
 	public int doCalc(){
@@ -30,6 +31,31 @@ public abstract class Node extends Observable implements  Observer {
 			this.setChanged();
 			notifyObservers(output);
 		}	
+	}
+	
+	public int getInputCount() {
+		return this.inputCount;
+	}
+	public void setInputCount(int inputCount) {
+		this.inputCount = inputCount;
+	}
+	public int getOutput() {
+		return this.output;
+	}
+	public void setOutput(int output) {
+		this.output = output;
+	}
+	public ArrayList<Integer> getInput() {
+		return input;
+	}
+	public void setInput(ArrayList<Integer> input) {
+		this.input = input;
+	}
+	public boolean getUsed() {
+		return this.used;
+	}
+	public void setUsed(boolean used) {
+		this.used = used;
 	}
 	
 }

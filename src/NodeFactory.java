@@ -24,7 +24,7 @@ public class NodeFactory {
 		} else if (nodeType.equals("XOR")) {
 			node = new NodeXor();
 		} else if (nodeType.equals("PROBE")) {
-			node = new NodeXor(); // TODO
+			Probe probe = new Probe(); // TODO
 		}
 		
 		// If node is null, not a valid node.
@@ -34,5 +34,9 @@ public class NodeFactory {
 			);
 			this.nodeList.add(node);
 		}
+	}
+	
+	public ArrayList<Node> getNodeList() {
+		return this.nodeList;
 	}
 }
