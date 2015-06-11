@@ -9,7 +9,6 @@ public abstract class Node extends Observable implements  Observer {
 	protected ArrayList<Integer> input = new ArrayList<Integer>();
 	protected boolean used = false;
 	
-	
 	public int doCalc(){
 		return output;
 	}
@@ -23,8 +22,13 @@ public abstract class Node extends Observable implements  Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		this.input.add((int) arg);
-		
+//		inputCount++;
+		System.out.println("New Node!");
+		for (Integer in : this.input) {
+			System.out.println("INT: " + in);
+		}
 		if(this.inputCount == this.input.size()){
+			System.out.println("HELLO!");
 			this.output = this.doCalc();
 			this.setChanged();
 			notifyObservers(output);
