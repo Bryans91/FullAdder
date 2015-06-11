@@ -8,6 +8,9 @@ public class Input extends Observable {
 
 	public int input;
 	
+	public Input () {
+	}
+	
 	public void setObserver(Node obs) {
 		addObserver(obs);
 	}

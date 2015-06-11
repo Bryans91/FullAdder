@@ -28,24 +28,27 @@ public class Circuit {
 	private void setNodeObservers(String nodeLinks, int i) {
 		ArrayList<Node> nodeList = this.nodeFactory.getNodeList();
 		ArrayList<String> nodeLinksArray = new ArrayList<String>();
-		Input input = null;
+		Input inputc = null, inputa = null, inputb = null;
 		int inputValue = 0;
+		char inputChar = 'X';
 		boolean isInput = false;
 		// Check if it is input
 		if (nodeLinks.charAt(0) == 'C') {
-			input = new Input();
+			inputChar = 'C';
+			inputc = new Input();
 			inputValue = this.carryIn;
 		} else if (nodeLinks.charAt(0) == 'A') {
-			input = new Input();
+			inputChar = 'A';
+			inputa = new Input();
 			inputValue = this.a;
 		} else if (nodeLinks.charAt(0) == 'B') {
-			input = new Input();
+			inputChar = 'B';
+			inputb = new Input();
 			inputValue = this.b;
 		}
 		if (nodeLinks.charAt(0) == 'C' || nodeLinks.charAt(0) == 'A' || nodeLinks.charAt(0) == 'B') {
 			isInput = true;
 			nodeLinksArray = nodeLinkCleaner(nodeLinks);
-			return;
 		}
 		// Make an array of links to add
 		nodeLinksArray = nodeLinkCleaner(nodeLinks);
@@ -54,11 +57,21 @@ public class Circuit {
 				int linkInt = Integer.parseInt(link)-1;
 				nodeList.get(i).setObserver(nodeList.get(linkInt));
 				System.out.println("Node " + (i+1) + " has observable: " + (linkInt+1));
-			} else if (isInput) {
+			} else if (isInput && inputChar == 'C') {
 				int linkInt = Integer.parseInt(link)-1;
-				input.setInput(inputValue);
-				input.setObserver(nodeList.get(linkInt));
-				input.update(input, inputValue);
+				inputc.setInput(inputValue);
+				inputc.setObserver(nodeList.get(linkInt));
+				inputc.update(inputc, inputValue);
+			} else if (isInput && inputChar == 'A') {
+				int linkInt = Integer.parseInt(link)-1;
+				inputa.setInput(inputValue);
+				inputa.setObserver(nodeList.get(linkInt));
+				inputa.update(inputa, inputValue);
+			} else if (isInput && inputChar == 'B') {
+				int linkInt = Integer.parseInt(link)-1;
+				inputb.setInput(inputValue);
+				inputb.setObserver(nodeList.get(linkInt));
+				inputb.update(inputb, inputValue);
 			} else if (link.contains("Cout")) {
 				System.out.println("Node " + (i+1) + " has observable: Cout");
 			} else if (link.contains("S")) {
