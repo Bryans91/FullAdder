@@ -16,5 +16,8 @@ De nodes worden geinitialiseerd in een low binding factory. De correcte nodes wo
 Polymorfisme
 De nodes maken gebruik van een abstracte node class en erven de gedeelde functies over van de parent. De verschillende nodes zijn het zelfde op de doCalc() functie na, welke de methode van de parent override. Daarnaast wordt bij de speciale endnodes (probes) de update functie vervangen om het eindresultaat van het circuit te tonen.
 
+Gebruik
+De adder kan gebruikt worden door een circuit.txt bestand in te laden en vervolgens een Circuit klasse aan te maken in de main met twee parameters: String file ("circuit.txt") en CarryIn, indien je de carryIn uit het input bestand wenst te gebruiken vul je bij carryIn 3 in. Vervolgens zal het circuit zichzelf initialiseren en starten. 
+
 
 
