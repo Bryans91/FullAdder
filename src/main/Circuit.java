@@ -16,9 +16,12 @@ public class Circuit {
 	private int carryIn, a, b;
 	public int carryOut,sOut;	
 	Input inputc = null, inputa = null, inputb = null;
+	Probe cout;
+	Probe s;
 	
 	public Circuit(String fileName, int carryIn){
-//		this.carryIn = carryIn; // TODO Alleen als carryin gezet is?
+		cout = new Probe("Cout");
+		s = new Probe("S");
 		readFile(fileName);
 		inputc.update(inputc, 0);
 		inputa.update(inputa, 0);
@@ -64,25 +67,25 @@ public class Circuit {
 				int linkInt = Integer.parseInt(link)-1;
 				inputc.setInput(inputValue);
 				inputc.setObserver(nodeList.get(linkInt));
-//				inputc.update(inputc, inputValue);
 			} else if (isInput && inputChar == 'A') {
 				int linkInt = Integer.parseInt(link)-1;
 				inputa.setInput(inputValue);
 				inputa.setObserver(nodeList.get(linkInt));
-//				inputa.update(inputa, inputValue);
 			} else if (isInput && inputChar == 'B') {
 				int linkInt = Integer.parseInt(link)-1;
 				inputb.setInput(inputValue);
 				inputb.setObserver(nodeList.get(linkInt));
-//				inputb.update(inputb, inputValue);
 			} else if (link.contains("Cout")) {
+				nodeList.get(i).setObserver(this.cout);
 				System.out.println("Node " + (i+1) + " has observable: Cout");
 			} else if (link.contains("S")) {
+				nodeList.get(i).setObserver(this.s);
 				System.out.println("Node " + (i+1) + " has observable: S");
 			}
 		}
 	}
 	
+	// Clean the text and make them into a number array
 	private ArrayList<String> nodeLinkCleaner(String nodeLinks) {
 		ArrayList<String> nodeLinksArray = new ArrayList<String>();
 		nodeLinks = nodeLinks.substring(0, nodeLinks.indexOf(';'));
