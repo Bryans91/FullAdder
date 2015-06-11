@@ -11,8 +11,6 @@ public abstract class Node extends Observable implements  Observer {
 	
 	
 	public int doCalc(){
-		
-		
 		return output;
 	}
 	
