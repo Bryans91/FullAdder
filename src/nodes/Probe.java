@@ -17,5 +17,12 @@ public class Probe implements Observer {
 		this.circuit.carryOut = output;
 		
 		System.out.println(this.probeType+" output: "+(int)arg);
-	}	
+	}
+	
+	public int getOutput() {
+		return this.output;
+	}
+	public void setOutput(int output) {
+		this.output = output;
+	}
 }
