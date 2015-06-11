@@ -21,7 +21,9 @@ public class Circuit {
 	
 	public Circuit(String fileName, int carryIn){
 		cout = new Probe("Cout");
+		cout.setCircuit(this);
 		s = new Probe("S");
+		s.setCircuit(this);
 		readFile(fileName);
 		inputc.update(inputc, 0);
 		inputa.update(inputa, 0);
