@@ -13,13 +13,14 @@ import nodes.Probe;
 public class Circuit {
 	
 	private NodeFactory nodeFactory = new NodeFactory();
-	private int carryIn, a, b;
+	private int carryIn = 3, a, b;
 	public int carryOut,sOut;	
-	Input inputc = null, inputa = null, inputb = null;
-	Probe cout;
-	Probe s;
+	private Input inputc = null, inputa = null, inputb = null;
+	public Probe cout;
+	public Probe s;
 	
 	public Circuit(String fileName, int carryIn){
+		this.carryIn = carryIn;
 		cout = new Probe("Cout");
 		cout.setCircuit(this);
 		s = new Probe("S");
@@ -139,7 +140,9 @@ public class Circuit {
                 	b = s.contains("INPUT_HIGH") ? 1 : 0;
                 	System.out.println("B in is: "+b);
                 } else if(!s.contains("#") && s.contains("Cin:") && nodeCreation) {
-                	carryIn = s.contains("INPUT_HIGH") ? 1 : 0;
+                	if(this.carryIn == 3){
+                		this.carryIn = s.contains("INPUT_HIGH") ? 1 : 0;
+                	}
                 	System.out.println("Carry in is: "+carryIn);
             	// Find the blank line to switch to node linking
                 } else if("".equals(s.trim())) {

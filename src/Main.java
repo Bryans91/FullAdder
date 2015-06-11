@@ -10,7 +10,7 @@ public class Main {
 		
 		System.out.println("Reusable Cout:" + c1.carryOut);
 		
-	//	Circuit c2 = new Circuit("circuit.txt",c1.carryOut);
+		Circuit c2 = new Circuit("circuit.txt",c1.carryOut);
 
 	}
 
