@@ -5,7 +5,7 @@ import java.util.Observable;
 
 public abstract class Node extends Observable implements  Observer {
 	
-	protected int inputCount = 0,output = 0;
+	protected int inputCount = 3,output = 0;
 	protected ArrayList<Integer> input = new ArrayList<Integer>();
 	protected boolean used = false;
 	
@@ -22,13 +22,12 @@ public abstract class Node extends Observable implements  Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		this.input.add((int) arg);
-//		inputCount++;
-		System.out.println("New Node!");
+		System.out.println("This node has inputcount: " + inputCount);
 		for (Integer in : this.input) {
-			System.out.println("INT: " + in);
+			System.out.println("Incoming integer: " + in);
 		}
 		if(this.inputCount == this.input.size()){
-			System.out.println("HELLO!");
+			System.out.println("I have inputsize!");
 			this.output = this.doCalc();
 			this.setChanged();
 			notifyObservers(output);
