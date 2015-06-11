@@ -10,19 +10,15 @@ public class Probe extends Node {
 	private String probeType = null;
 	private int output;
 	private Circuit circuit;
+	private String name;
 
+	public Probe(String name){
+		this.name = name;
+	}
+	
 	@Override
 	public void update(Observable o, Object arg) {
-		this.input.add((int) arg);
-		System.out.println("This node has inputcount: " + inputCount);
-		for (Integer in : this.input) {
-			System.out.println("Incoming integer: " + in);
-		}
-		if(this.inputCount == this.input.size()){
-			this.output = (int) arg;
-			this.circuit.carryOut = output;
-			System.out.println(this.probeType+" output: "+(int)arg);
-		}	
+		System.out.println("THE FINAL ANSWER OF " + this.name + " IS: " + arg);
 	}
 	
 	public int getOutput() {

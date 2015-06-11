@@ -31,8 +31,6 @@ public class NodeFactory {
 		} else if (nodeType.equals("XOR")) {
 			node = new NodeXor();
 			node.setInputCount(2);
-		} else if (nodeType.equals("PROBE")) {
-			Probe probe = new Probe(); // TODO
 		}
 		
 		// If node is null, not a valid node.
