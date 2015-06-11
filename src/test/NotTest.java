@@ -26,6 +26,7 @@ public class NotTest {
 		this.not = new NodeNand();
 		ArrayList<Integer> input = new ArrayList<Integer>();
 		input.add(0);
+		input.add(0);
 		this.not.setInput(input);
 		
 	}
