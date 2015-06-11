@@ -18,7 +18,10 @@ public class Probe extends Node {
 	
 	@Override
 	public void update(Observable o, Object arg) {
-		System.out.println("THE FINAL ANSWER OF " + this.name + " IS: " + arg);
+		if(this.name == "Cout"){
+			this.circuit.carryOut = (int) arg;
+		}
+		System.out.println("\n\nTHE FINAL ANSWER OF " + this.name + " IS: " + arg);
 	}
 	
 	public int getOutput() {

@@ -22,13 +22,14 @@ public abstract class Node extends Observable implements  Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		this.input.add((int) arg);
-		System.out.println("This node has inputcount: " + inputCount);
+		System.out.println("\nThis expects nr of inputs: " + inputCount);
 		for (Integer in : this.input) {
 			System.out.println("Incoming integer: " + in);
 		}
 		if(this.inputCount == this.input.size()){
-			System.out.println("I have inputsize!");
+			
 			this.output = this.doCalc();
+			System.out.println("Output = " + this.output);
 			this.setChanged();
 			notifyObservers(output);
 		}	
