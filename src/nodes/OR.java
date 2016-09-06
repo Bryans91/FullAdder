@@ -2,6 +2,8 @@ package nodes;
 
 public class OR extends Node {
 	
+	protected int inputCount = 2;
+	
 	public int doCalc(){
 		System.out.println("OR:"+this.input.get(0) + " | "+ this.input.get(1));
 		int out = 0;

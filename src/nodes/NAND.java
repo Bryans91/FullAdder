@@ -2,6 +2,8 @@ package nodes;
 
 public class NAND extends Node {
 	
+	protected int inputCount = 2;
+	
 	public int doCalc(){
 		System.out.println("NAND:"+this.input.get(0) + " | "+ this.input.get(1));
 		int out = 1;

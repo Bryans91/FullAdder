@@ -28,6 +28,7 @@ public class NodeFactory {
 		if (commands.get(nodeType) != null) {		
 				try {
 					node = (Node) Class.forName("nodes."+nodeType).newInstance();
+					node.setInputCount(2);
 				} catch (InstantiationException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -43,28 +44,31 @@ public class NodeFactory {
 		    // No such key
 		}
 		
+		
+		
+		
 		// Make a node depending on the nodeType
 		/*
 		if (nodeType.equals("AND")) {
-			node = new NodeAnd();
+			node = new AND();
 			node.setInputCount(2);
 		} else if (nodeType.equals("NAND")) {
-			node = new NodeNand();
+			node = new NAND();
 			node.setInputCount(2);
 		} else if (nodeType.equals("NOR")) {
-			node = new NodeNor();
+			node = new NOR();
 			node.setInputCount(2);
 		} else if (nodeType.equals("NOT")) {
-			node = new NodeNot();
+			node = new NOT();
 			node.setInputCount(1);
 		} else if (nodeType.equals("OR")) {
-			node = new NodeOr();
+			node = new OR();
 			node.setInputCount(2);
 		} else if (nodeType.equals("XOR")) {
-			node = new NodeXor();
+			node = new XOR();
 			node.setInputCount(2);
-		}*/
-		
+		}
+		*/
 		// If node is null, not a valid node.
 		if (node != null) {
 			System.out.println(

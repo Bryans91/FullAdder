@@ -32,9 +32,6 @@ public class Circuit {
 	}
 	
 	
-	
-	
-	
 	private void setNodeObservers(String nodeLinks, int i) {
 		ArrayList<Node> nodeList = this.nodeFactory.getNodeList();
 		ArrayList<String> nodeLinksArray = new ArrayList<String>();
