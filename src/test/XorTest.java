@@ -23,7 +23,7 @@ public class XorTest {
 	 */
 	@Before
 	public void setUp() {
-		this.xor = new NodeNand();
+		this.xor = new XOR();
 		ArrayList<Integer> input = new ArrayList<Integer>();
 		input.add(1);
 		input.add(0);

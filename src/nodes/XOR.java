@@ -1,6 +1,6 @@
 package nodes;
 
-public class NodeXor extends Node {
+public class XOR extends Node {
 	
 	public int doCalc(){
 		System.out.println("XOR:"+this.input.get(0) + " | "+ this.input.get(1));

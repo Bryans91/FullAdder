@@ -23,7 +23,7 @@ public class OrTest {
 	 */
 	@Before
 	public void setUp() {
-		this.or = new NodeNand();
+		this.or = new OR();
 		ArrayList<Integer> input = new ArrayList<Integer>();
 		input.add(0);
 		input.add(1);

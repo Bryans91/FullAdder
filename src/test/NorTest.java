@@ -23,7 +23,7 @@ public class NorTest {
 	 */
 	@Before
 	public void setUp() {
-		this.nor = new NodeNand();
+		this.nor = new NOR();
 		ArrayList<Integer> input = new ArrayList<Integer>();
 		input.add(0);
 		input.add(0);

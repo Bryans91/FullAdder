@@ -1,6 +1,6 @@
 package nodes;
 
-public class NodeNot extends Node {
+public class NOT extends Node {
 	
 	
 	public int doCalc(){

@@ -23,7 +23,7 @@ public class NandTest {
 	 */
 	@Before
 	public void setUp() {
-		this.nand = new NodeNand();
+		this.nand = new NAND();
 		ArrayList<Integer> input = new ArrayList<Integer>();
 		input.add(1);
 		input.add(1);

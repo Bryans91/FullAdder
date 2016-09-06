@@ -1,0 +1,6 @@
+nodes.AND
+nodes.NAND
+nodes.NOR
+nodes.NOT
+nodes.OR
+nodes.XOR

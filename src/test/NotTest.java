@@ -23,7 +23,7 @@ public class NotTest {
 	 */
 	@Before
 	public void setUp() {
-		this.not = new NodeNand();
+		this.not = new NOT();
 		ArrayList<Integer> input = new ArrayList<Integer>();
 		input.add(0);
 		input.add(0);

@@ -1,6 +1,6 @@
 package nodes;
 
-public class NodeNor extends Node {
+public class NOR extends Node {
 
 	public int doCalc(){
 		System.out.println("NOR:"+this.input.get(0) + " | "+ this.input.get(1));

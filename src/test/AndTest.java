@@ -23,7 +23,7 @@ public class AndTest {
 	 */
 	@Before
 	public void setUp() {
-		this.and = new NodeAnd();
+		this.and = new AND();
 		ArrayList<Integer> input = new ArrayList<Integer>();
 		input.add(1);
 		input.add(1);

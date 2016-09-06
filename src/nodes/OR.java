@@ -1,6 +1,6 @@
 package nodes;
 
-public class NodeOr extends Node {
+public class OR extends Node {
 	
 	public int doCalc(){
 		System.out.println("OR:"+this.input.get(0) + " | "+ this.input.get(1));

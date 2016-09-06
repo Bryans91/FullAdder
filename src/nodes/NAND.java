@@ -1,6 +1,6 @@
 package nodes;
 
-public class NodeNand extends Node {
+public class NAND extends Node {
 	
 	public int doCalc(){
 		System.out.println("NAND:"+this.input.get(0) + " | "+ this.input.get(1));
